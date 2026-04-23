@@ -2,28 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CD System - Home</title>
+  <title>CDRip - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <h2>🎵 CD System</h2>
+<!-- navbar -->
+<nav>       
+  <h2>CDRip</h2>
   <div class="nav-links">
     <a href="index.php">Home</a>
     <a href="list.php">List</a>
-    <a href="add.php">Add</a>
+    <a href="add.php">Modify</a>
+    <a href="stats.php">Info</a>
   </div>
 </nav>
 
-<main class="hero">
+<!-- hero/main text, whateveryoucallit section -->
+<main class="hero"> 
   <div class="hero-text">
     <h1>CD Album and Song Management</h1>
     <p>Organize artists, albums, and songs in one clean system.</p>
     <a href="list.php" class="btn">View Albums</a>
   </div>
-
+  <!-- album songs -->
   <div class="album-collage">
     <img src="images/album1.png" class="album a1" alt="Visions">
     <img src="images/album2.jpg" class="album a2" alt="Puberty 2">
