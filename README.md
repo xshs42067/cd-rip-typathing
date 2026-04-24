@@ -3,7 +3,7 @@ NOTE: The webpage now automatically sets up the database whenever it detects it 
 Before visiting the website, the database should be initialized.
 
 Run Apache and PHPMyAdmin and go to localhost/cd_system/index.php on your browser.
-Create a database named "cd_system". then paste this SQL schema on the SQL tab of the database created.
+Create a database named "cd_system". then paste this SQL schema on the SQL tab of the database created. ~~
 ```
 DROP DATABASE IF EXISTS cd_system;
 CREATE DATABASE cd_system;
@@ -32,6 +32,6 @@ CREATE TABLE Song (
     FOREIGN KEY (album_id) REFERENCES CD_Album(album_id) ON DELETE CASCADE
 );
 ```
-You can now use the website. ~~
+You can now use the website.
 
 
