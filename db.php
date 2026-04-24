@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$db = "cd_system";
+// $db = "cd_system";
 
 $db_name = "cd_system";
 

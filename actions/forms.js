@@ -15,11 +15,8 @@ function toggleFields() {
         var container = document.getElementById(id);
         var isActive = sections[id];
 
-        // 1. Show or Hide the div
         container.style.display = isActive ? 'block' : 'none';
 
-        // 2. THE FIX: Disable inputs inside hidden divs
-        // This stops the browser from checking "required" on hidden fields
         var inputs = container.querySelectorAll('input, select');
         inputs.forEach(function(input) {
             input.disabled = !isActive;
@@ -30,6 +27,16 @@ function toggleFields() {
     document.getElementById('deleteButton').style.display = (mode === 'delete') ? 'block' : 'none';
     document.getElementById('deleteAlbumButton').style.display = (mode === 'del_album') ? 'block' : 'none';
 }
-
-// Initial run to set the page correctly on load
 toggleFields();
+
+// for the alert thingy
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('success')) {
+    alert("Song added successfully.");
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+// deleted
+if (urlParams.has('deleted')) {
+    alert("Deleted successfully. :3");
+    window.history.replaceState({}, document.title, window.location.pathname);
+}

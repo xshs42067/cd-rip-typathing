@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             }
         }
         $conn->query("DELETE FROM song WHERE song_id = $song_id");
-        header("Location: ../list.php");
+        // success!
+        header("Location: ../list.php?success=1");
         exit;
     }
 
@@ -25,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $song_title = $conn->real_escape_string($_POST['song_title']);
     $track_number = (int)$_POST['track_number'];
 
-    // Add to existing album or create new album + artist?
+    // Add to existing album or create new album with artist
     if ($mode === 'existing') {
         $album_id = (int)$_POST['existing_album_id'];
     } else {
@@ -50,7 +51,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (!empty($_FILES['album_art']['name'])) {
             $upload_dir = dirname(__DIR__) . "/uploads";
             if (!file_exists($upload_dir)) {
-                // wait, im having permission issues with this part, NOTE: add 0777 and "true" mkdir($upload_dir, 0777, true) if it doesnt work, remember that time you need to do chmod in terminal just to run debian files? -hans 2k26
                 mkdir($upload_dir);
             }
             // the random number is in UNIX time when it was added, to prevent something like filename overrides and stuff -hans 2k26
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $conn->query("INSERT INTO song (song_title, track_number, album_id, song_file) VALUES ('$song_title', '$track_number', '$album_id', '$song_file_name')");
-    header("Location: ../list.php");
+    header("Location: ../list.php?success=1");
     exit;
 }
 ?>

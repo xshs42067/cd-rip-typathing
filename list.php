@@ -96,8 +96,7 @@ $artist_id = isset($_GET['artist']) ? (int)$_GET['artist'] : null;
                                     </li>
                                 <?php endwhile; ?>
                                 </ul>
-                            <?php else: ?>
-                                // if no songs for album!!!
+                            <?php else: ?> <!-- no songs?! -->
                                 <p style="color:#888; font-size:0.9rem;">No tracks found for this album.</p>
                             <?php endif; ?>
                         </div>
