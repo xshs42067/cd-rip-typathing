@@ -1,4 +1,4 @@
-NOTE: The webpage now automatically sets up the database whenever it detects it does not
+**NOTE (4/24/26): The webpage now automatically sets up the database whenever it detects it does not.**
 ~~To setup the website, install XAMPP on your pc then download all the files and paste on xampp/htdocs/cd_system directory.
 Before visiting the website, the database should be initialized.
 
