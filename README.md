@@ -1,9 +1,9 @@
 **NOTE (4/24/26): The webpage now automatically sets up the database whenever it detects it does not.**
-~~To setup the website, install XAMPP on your pc then download all the files and paste on xampp/htdocs/cd_system directory.
+<s>To setup the website, install XAMPP on your pc then download all the files and paste on xampp/htdocs/cd_system directory.
 Before visiting the website, the database should be initialized.
 
 Run Apache and PHPMyAdmin and go to localhost/cd_system/index.php on your browser.
-Create a database named "cd_system". then paste this SQL schema on the SQL tab of the database created. ~~
+Create a database named "cd_system". then paste this SQL schema on the SQL tab of the database created. </s>
 ```
 DROP DATABASE IF EXISTS cd_system;
 CREATE DATABASE cd_system;
