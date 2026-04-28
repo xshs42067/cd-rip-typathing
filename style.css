@@ -345,7 +345,7 @@ audio:hover {
   box-shadow: #000 0px 0px 8px, #ff6fff 0px 0px 12px;
   transition: 0.9s ease;
 }
-
+/* tracklist */
 .track-list {
     display: grid;
     gap: 14px;
@@ -403,7 +403,7 @@ footer {
     margin-top: auto;
 }
 
-/* stats page */
+/* stats!!! */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));

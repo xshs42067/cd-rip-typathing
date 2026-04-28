@@ -38,6 +38,6 @@ if (isset($_POST['delete_album_id'])) {
         $conn->query("DELETE FROM artist WHERE artist_id = $artist_id");
     }
 }
-header("Location: ../add.php?deleted=1");
+header("Location: ../list.php?deleted=1");
 exit;
 ?>

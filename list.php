@@ -1,7 +1,7 @@
 <?php
 
 include "db.php";
-// get artist id defaults to null when empty
+// get artist id, defaults to null when empty
 $artist_id = isset($_GET['artist']) ? (int)$_GET['artist'] : null;
 
 ?>

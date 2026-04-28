@@ -34,8 +34,10 @@ $existing_songs = $conn->query("SELECT s.song_id, s.song_title, a.album_title, a
                     <!--<input type="radio" name="mode" value="new" checked>New Album</input> (((((i tried changing the options into a radio button instead, it broke. nevermind. -hans, circa 4/20/26)))))-->
                     <option value="new">New Album</option>
                     <option value="existing">Add Track to Existing Album</option>
+                    <option value="update">Edit Album</option>
                     <option value="delete">Delete Track</option>
                     <option value="del_album">Delete Album</option>
+                    
                 </select>
             </div>
 
@@ -74,6 +76,39 @@ $existing_songs = $conn->query("SELECT s.song_id, s.song_title, a.album_title, a
             </div>
         </div>
 
+         <!-- update album (4/28/26, forgot our website doesnt contain a update operation) --> <!-- IT TOOK ME 40 MINUTES JUST TO FIND OUT IT WORKS ON MY PERSONAL CHROME USER WINDOW BUT NOT SA WVSU USER. OKAY IT SHOWS THE THING!!! (hans, 4:52pm 4/28/26)-->
+        <div id="updateAlbumFields" style="display:none;">
+            <div class="input-group">
+                <label>Select Album to Edit</label>
+                <select name="update_album_id" class="select-style">
+                    <?php 
+                    $existing_albums->data_seek(0); 
+                    if ($existing_albums->num_rows > 0): ?>
+                        <?php while ($row = $existing_albums->fetch_assoc()): ?>
+                            <option value="<?php echo $row['album_id']; ?>">
+                                <?php echo htmlspecialchars($row['artist_name'] . ' - ' . $row['album_title']); ?>
+                            </option>
+                        <?php endwhile; ?>
+                    <?php else: ?>
+                        <option disabled selected>No albums available for editing.</option>
+                    <?php endif; ?>
+                </select>
+            </div> 
+            <div class="input-group"><label>Album Title</label><input type="text" name="input_album_title" required></div> <!--Fixed, just noticed i used id= instead of name=, hans, 6:04pm-->
+            <div class="input-group"><label>Release Year</label><input type="number" name="input_release_year" required></div>
+            <div class="input-group"><label>Condition</label>
+                <select name="input_condition_status" class="select-style">
+                    <option value="Brand New">Brand New</option>
+                    <option value="Used (Good Condition)">Used (Good Condition)</option>
+                    <option value="Used (Poor Condition)">Used (Poor Condition)</option>
+                    <option value="Unusable (Badly Scratched)">Unusable (Badly Scratched)</option>
+                </select>
+            </div>
+            <div class="input-group"><label>Date Acquired</label><input type="date" name="input_date_acquired" required></div>
+
+            <button type="submit" class="btn-submit" onclick="this.form.action='actions/update.php';">Edit Album</button>
+        </div>
+
         <!--delete a song-->
 
         <div id="deleteFields" style="display:none;">
@@ -99,7 +134,7 @@ $existing_songs = $conn->query("SELECT s.song_id, s.song_title, a.album_title, a
                 <select name="delete_album_id" class="select-style">
                     <?php
                     // reusing existing albums variable since it has the same data as the dropdown for adding to existing albums, just with different display text
-                    $existing_albums->data_seek(0); // reset pointer to reuse result set
+                    $existing_albums->data_seek(0);
                     if ($existing_albums->num_rows > 0): ?> 
                         <?php while ($row = $existing_albums->fetch_assoc()): ?>
                             <option value="<?php echo $row['album_id']; ?>"><?php echo htmlspecialchars($row['artist_name'] . ' - ' . $row['album_title']); ?></option>
@@ -127,7 +162,7 @@ $existing_songs = $conn->query("SELECT s.song_id, s.song_title, a.album_title, a
         <div id="deleteAlbumButton" style="display:none;">
             <button type="submit" class="btn-submit" onclick="this.form.action='actions/delete.php';">Delete Album</button>
 
-        </form>
+        <form>
     </div>
 </main>
 <footer>
@@ -135,5 +170,6 @@ $existing_songs = $conn->query("SELECT s.song_id, s.song_title, a.album_title, a
 </footer>
 
 <script src="actions/forms.js"></script>
+
 </body>
 </html>
